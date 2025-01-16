@@ -1,114 +1,44 @@
-# Make your own Codewars Style Challenge
 
-In this workshop, you'll create your own programming challenge for others to solve, similar to the ones you might have tackled on Codewars. You'll write unit tests to validate solutions. Then you can share your challenge with other bootcampers for them to solve. If a submitted solution passes all your tests, it will be considered a correct solution - just like on Codewars. This is a great chance to get creative and come up with a programming challenge to stump your peers!
+## Tube Conductor Kata
 
-## 💡 OBJECTIVES FOR THE WORKSHOP
+We were tasked with creating a Codewars-style 'kata', a small coding challenge to share with our fellow bootcampers. The brief specified that we should use Vitest to test the user's solution. If all the tests pass, the user has successfully completed the task. ✅
+## Ideation
 
-Here's a glimpse of what you'll be achieving by the end of this workshop:
+In my team, we decided to create challenges based on the theme of London. I brainstormed a few ideas inspired by tube station names and eventually landed on the theme of a tube conductor. The basic premise of the challenge was for the user to write a function that calculates how many passengers are left on the tube at the end of a journey.
 
-- Clearly describing a problem/task that you want others to solve
-- Writing unit tests to check whether their solution to your task is correct
-- Present your project plan, story, and anything else you feel supports your creation process and final outcome in a document
+I wanted my challenge to have a reasonable level of difficulty but remain an achievable problem for most users to solve.
 
-## 🎟️ TICKETS
 
-Time to dive into action! 🏊‍♂️ Here's what you'll be working on:
+## The Challenge! 🚇
 
-### 🎫 Ticket 1 - Setup
+**You are a conductor on a busy tube line in central London. Your job is to keep track of the number of passengers on the tube as it travels along its route.**
 
-Install Vitest and optionally set up an NPM `test` script that conveniently runs your tests.
+**Write a function called passengersLeft(x) that calculates the number of passengers remaining on the tube at the end of a journey.**
 
-You will be making one kata each, but you will be in development teams. The aim is to co-elevate each other. There are several ways you can and should look to help each other:
+-The function will take a nested array x, where each element is a pair:
 
-- Brainstorming: Helping each make your ideas better, and giving feedback to each other to add different perspectives and improve the end product
-- Planning: You can help validate each others plans, and sense check in a team review the direction of your products
-- Check-ins: Regular team stand-ups / check-ins will help make sure you are building and making progress together
-- Support: You should aim to help each other overcome issues if one of your team is stuck and cannot Google their way out of it
-- Testing: You can act as a first line user test for each others katas. You might find it a good idea to book in regular checkpoints to demo to each other and get initial feedback in quick bursts, making sure you can build in and adapt to any useful feedback before official release of your katas
+-The first number in the pair represents passengers getting off the tube at a stop.
 
-### 🎫 Ticket 2 - Plan your kata
+-The second number represents passengers getting on the tube at that stop.
 
-Attack this as you would any other problem - plan, plan, plan and use our agile approach to create steps that allow you to build MVPs and incrementally reach your stretch goals. Brainstorm options with a technique like Disney Ideation. Once you have a compelling challenge and story idea, start breaking it down. Think about the goals of your challenge, and the scenarios you could provide to test if people have reached those goals. Provide any examples or additional details that are necessary for someone taking on your kata to understand the problem, but don't give away so much that it removes the challenge. You want to strike a balance - not too vague but not spoon-feeding the solution either.
+-At the start of the journey, *there are always 10 passengers already on the tube.*-
 
-Write your kata's scenario in a comment in `main.js` and include the start of an exported function that your audience will use to solve it (like you've seen on the katas you've done before). If it's useful to see an example:
+-Assume that the array includes all the stops for the journey.
 
-```js
-/**
- * Hello challenger! Your task is to write a function named `transformLength` which takes in a string and returns 1 if the length of the string is even and otherwise -1.
- *
- * Your implementation should handle strings whose length is between 0 (inclusive) and 2500 (inclusive).
- *
- * A few examples:
- *    `transformLength("table")` should return -1 as the length of "table" is not even
- *    `transformLength("wizard")` should return 1 as the length of "wizard" is even
- */
-export function transformLength(string) {
-  // Good luck!
-}
-```
+-The input will always be a nested array where every element is a pair of numbers
 
-ℹ️ The reason for leaving the function body empty is that you want the people solving your kata to write their own implementation from scratch. Your role is to provide the overall problem statement and function skeleton. The solving and coding is up to them! Leaving an incomplete skeleton function helps point them in the right direction without giving away a full working solution.
+-Your task is to calculate the total number of passengers remaining on the tube after all stops.
 
-### 🎫 Ticket 3 - Write your kata
 
-When drafting your test cases, consider the different inputs that could be passed to the solution function and any edge cases you want to account for. You could put into practice tools such as Equivalency Partitioning, Boundary Value Analysis, and Decision Tables if its useful. Think of test values that will thoroughly cover the expected functionality. The number of tests is up to you, but aim for sufficient coverage to validate correctness.
 
-Since you'll write tests before seeing people's solutions, focus on defining expected outputs for given inputs, without assumptions about how people actually wrote the code. You're testing for outcomes. You could follow a TDD workflow - write a failing test, then temporarily add code to pass it. Just be sure to remove the solution code before sharing the kata. This helps ensure your tests fail when logic is missing or incorrect and pass when implemented properly.
 
-If it's useful to see an example (continuing the `checkLength` example from earlier):
+**Example cases:**
 
-```js
-import { test, expect } from "vitest";
-import { checkLength } from "./main.js";
+An input of [[10,1],[0,0]] //should return a value of 1
 
-test("should return -1 for strings with an odd length", () => {
-  const expected = -1;
-  const actual = checkLength("table");
-  expect(actual).toBe(expected);
-});
+An input of [[0, 10],[5, 0],[3, 2]] //should return a value of 14
+## The Planning ✍️
 
-test("should return 1 for strings with an even length", () => {
-  const expected = 1;
-  const actual = checkLength("wizard");
-  expect(actual).toBe(expected);
-});
-```
+Once I had finalized my challenge, I outlined my milestones and MVPs in a document, then organized my issues into a Kanban board on GitHub.
 
-🎯 At this stage you should have a description of the problem in `main.js` and some tests in `main.test.js`.
-
-### 🎫 Ticket 4 - Check your tests
-
-To verify your tests, temporarily add a working implementation to the solution function in `main.js`. Check that the tests fail before implementation and pass when the function is coded correctly. This validates that your tests accurately check for both incorrect and correct solutions. Remember to remove the solution code afterwards before sharing the kata.
-
-If it's useful to see an example (continuing the `checkLength` example from earlier):
-
-```js
-export function checkLength(string) {
-  // Temporarily added the line below to check if tests pass, but will remove it before committing and pushing.
-  return string.length % 2 === 0 ? 1 : -1;
-}
-```
-
-### 🎫 Ticket 5 - Share your kata
-
-Before pushing your final kata repository, be sure to remove any solution code you added for test validation. You want to provide only the kata description, skeleton function, and test cases - no actual solutions. Once ready, share your repo link in the [learn.schoolofcode.co.uk Hackathon Channel](https://learn.schoolofcode.co.uk/path-player?courseid=bc17-qe&unit=66acf966524bf23f05018063Unit) so other bootcampers can find it, clone it, implement solutions, and run your tests to check their progress. This allows them to solve the programming challenge you've created!
-
-Share it with following format:
-
-```
-Room: REPLACE_ME_WITH_YOUR_ROOM_NUMBER
-Name: REPLACE_ME_WITH_YOUR_NAME
-Link: REPLACE_ME_WITH_A_LINK_TO_YOUR_PUBLIC_GITHUB_REPO_CONTAINING_THE_KATA
-Overview: REPLACE_ME_WITH_A_BRIEF_DESCRIPTION_OF_WHAT_YOUR_KATA_IS_ABOUT
-```
-
-If it's not public already, remember to change the visibility of your repository to public.
-
-### 🎫 Ticket 6 - Present you kata
-
-Make sure you present your project in [the markdown file here](/PROJECT_PRESENTATION.md) - this will be assessed alongside your actual kata. Treat this as an asynchronous presentation - anything you would want to talk through (plans, brainstorming, final results, user feedback, etc) should go in here.
-
-### 🎫 Ticket 7 - Complete katas from others
-
-To solve katas created by other bootcampers, first clone their repository using the shared link. `cd` into the folder, run `npm install` to get the dependencies, then implement a solution in main.js. Execute their test cases to validate your code against their requirements. Provide feedback on the clarity of their instructions, difficulty level, and effectiveness of the tests. Engaging with each other's challenges allows everyone to learn. Make sure to critique respectfully - creating a programming challenge is difficult!
-
+Please see the planning doc here: https://docs.google.com/document/d/1uNdeArAlf9f9Z2UgUqP9M6Ig5oBRfsAwUGtdW8_YZw8/edit?usp=sharing
