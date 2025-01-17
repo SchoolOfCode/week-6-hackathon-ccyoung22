@@ -1,4 +1,6 @@
-// You are a conductor on a busy tube line in central London. Your job is to keep track of the number of passengers on the tube as it travels along its route.
+//Remember to npm install beofre you start!
+
+//You are a conductor on a busy tube line in central London.Your job is to keep track of the number of passengers on the tube as it travels along its route.
 
 // Write a function called passengersLeft(x) that calculates the number of passengers remaining on the tube at the end of a journey.
 
@@ -16,14 +18,10 @@
 
 //The input will always be a nested array where every element is a pair of numbers
 
+//Your function should always throw an error with a message of "Input must be an array", when anything other than an array is passed into the function
+
 export function passengersLeft(x) {
-  let passengersOff = 0;
-  let passengers = 10;
-  for (let i = 0; i < x.length; i++) {
-    passengersOff += x[i][0];
-    passengers += x[i][1];
-  }
-  return passengers - passengersOff;
+  //Your solution goes here!
 }
 
 //Example cases:

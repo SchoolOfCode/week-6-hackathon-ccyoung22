@@ -48,3 +48,15 @@ test("Check passengers left function returns 10", () => {
     ])
   ).toBe(9900);
 });
+
+test("Check error thrown for anything entered that is not an array", () => {
+  expect(() => passengersLeft(0)).toThrow("Input must be an array");
+});
+
+test("Check error thrown for anything entered that is not an array", () => {
+  expect(() => passengersLeft({ 0: 0 })).toThrow("Input must be an array");
+});
+
+test("Check error thrown for anything entered that is not an array", () => {
+  expect(() => passengersLeft("£")).toThrow("Input must be an array");
+});
